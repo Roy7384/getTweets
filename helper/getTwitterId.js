@@ -13,12 +13,17 @@ const getTwitterId = (names, cachedResult) => {
   });
 
   // call twitter user endpoint and get back userid as an array
-  return axios.get(userEndpoint + usernames.join(), {
-    headers: {
-      'authorization': `Bearer ${token}`
-    }
-  })
-    .then(res => res.data.map(userObj => userObj.id))
+  return axios
+    .get(userEndpoint + usernames.join(), {
+      headers: {
+        authorization: `Bearer ${token}`
+      }
+    })
+    .then(res =>
+      res.data.data.map(({ username, id }) => {
+        return { [username]: id };
+      })
+    )
     .catch(err => console.log(err));
 
 };
