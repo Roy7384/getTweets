@@ -10,7 +10,8 @@ const getTweets = async (names, cachedResult) => {
   // set request header and query params
   const params = new URLSearchParams([
     ["max_results", 20],
-    ["tweet.fields", "public_metrics"]
+    ["tweet.fields", "public_metrics"],
+    ["exclude", "retweets"]
   ]);
   const headers = { authorization: `Bearer ${token}` };
 
