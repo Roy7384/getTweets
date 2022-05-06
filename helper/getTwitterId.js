@@ -21,7 +21,7 @@ const getTwitterId = (names, cachedResult) => {
     })
     .then(res =>
       res.data.data.map(({ username, id }) => {
-        return { [username]: id };
+        return { [username.toLowerCase()]: id };
       })
     )
     .catch(err => console.log(err));

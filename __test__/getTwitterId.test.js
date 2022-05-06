@@ -7,7 +7,7 @@ describe("Test getting twitter id from usernames", () => {
       .then(result => {
         expect(result).toEqual([
           { elonmusk: "44196397" },
-          { VitalikButerin: "295218901" }
+          { vitalikbuterin: "295218901" }
         ]);
         done();
       })

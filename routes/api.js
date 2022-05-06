@@ -23,7 +23,8 @@ module.exports = cachedResult => {
     }
 
     // get all names from query and call twitter api
-    const namesArr = names.split(',');
+    const namesArr = names.split(',').map(name => name.toLowerCase());
+    
     getTweets(namesArr, cachedResult).then(tweets => {
 
       // sort tweets according to query parameters and send back to client
