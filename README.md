@@ -1,5 +1,6 @@
 # getTweets
-A simple express API server with caching, that returns a list of recent tweets according to query parameters. 
+A simple express API server with caching, that returns a list of recent tweets according to query parameters. <br>
+Will retrieve 20 recent tweets per given twitter username excluding retweets. Requests to twitter api are made concurrently. 
 
 ## Routes
 - GET /api/ping
@@ -18,3 +19,11 @@ A simple express API server with caching, that returns a list of recent tweets a
     - ```{ "error":"names parameter is required" }``` indicates names parameter was not provided
     - ```{ "error":"sortBy parameter is invalid" }``` indicates invalid sortBy value
     - ```{ "error":"direction parameter is invalid" }``` indicates invalid direction value
+
+## Dependencies
+- Express
+- Axios
+- dotenv
+- DevDependencies
+  - jest
+  - supertest
