@@ -1,10 +1,10 @@
 // function for checking query parameters and send back error message if invalid
-const queryValidator = (tags, sortBy, direction) => {
-  const validSortBy = ["id", "reads", "likes", "popularity"];
+const queryValidator = (names, sortBy, direction) => {
+  const validSortBy = ["id", "retweet_count", "like_count", "reply_count"];
   const validDirection = ["desc", "asc"];
 
-  if (!tags) {
-    return { error: 'Tags parameter is required' };
+  if (!names) {
+    return { error: 'names parameter is required' };
   }
 
   if (sortBy && !validSortBy.includes(sortBy)) {
