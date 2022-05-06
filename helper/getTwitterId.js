@@ -1,4 +1,4 @@
-const axios = require("axios");
+const axios = require('axios');
 const token = process.env.BEARER_TOKEN;
 const userEndpoint = "https://api.twitter.com/2/users/by?usernames=";
 
@@ -12,6 +12,7 @@ const getTwitterId = (names, cachedResult) => {
     }
   });
 
+  // call twitter user endpoint and get back userid as an array
   return axios.get(userEndpoint + usernames.join(), {
     headers: {
       'authorization': `Bearer ${token}`
@@ -22,12 +23,4 @@ const getTwitterId = (names, cachedResult) => {
 
 };
 
-const callTwitterApi = (names, cachedResult) => {
-  const requests = names.map(name => {
-    if (Object.keys(cachedResult).includes(name)) {
-      return Promise.resolve({ data: { tweets: cachedResult[name] } });
-    }
-  });
-};
-
-module.exports = callTwitterApi;
+module.exports = getTwitterId;

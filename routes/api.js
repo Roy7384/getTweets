@@ -3,7 +3,7 @@ const router = express.Router();
 
 // helper funcitons
 const queryValidator = require('../helper/queryValidator');
-const callTwitterApi = require('../helper/callTwitterApi');
+const getTweets = require('../helper/getTweets');
 const sortTweets = require('../helper/sortTweets');
 
 module.exports = cachedResult => {
@@ -24,7 +24,7 @@ module.exports = cachedResult => {
 
     // get all names from query and call twitter api
     const namesArr = names.split(',');
-    callTwitterApi(namesArr, cachedResult).then(tweets => {
+    getTweets(namesArr, cachedResult).then(tweets => {
 
       // sort tweets according to query parameters and send back to client
       const parsedTweets = sortTweets(sortBy, direction, tweets);
