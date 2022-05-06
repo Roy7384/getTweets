@@ -17,7 +17,7 @@ const getTweets = async (names, cachedResult) => {
 
   // generate requests for different twitter names
   const requests = names.map(name => {
-    if (Object.keys(cachedResult).includes(name)) {
+    if (cachedResult[name]) {
       return Promise.resolve(cachedResult[name]);
     }
     return axios.get(endpointURL + twitterIds[name] + "/tweets", {
