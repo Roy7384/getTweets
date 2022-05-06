@@ -1,6 +1,6 @@
 # getTweets
 A simple express API server with caching, that returns a list of recent tweets according to query parameters. <br>
-Will retrieve 20 recent tweets per given twitter username excluding retweets. Requests to twitter api are made concurrently. Server deloyed to Heroku. Try the api with this url: https://get-tweets-api-server.herokuapp.com/
+Will retrieve 20 recent tweets per given twitter username excluding retweets. Requests to twitter api are made concurrently. Server deloyed to Heroku. Try the API with this url: https://get-tweets-api-server.herokuapp.com/
 
 ## Run Locally
 
