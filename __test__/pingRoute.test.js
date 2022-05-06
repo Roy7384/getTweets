@@ -1,7 +1,7 @@
 const request = require('supertest');
 const app = require('../app');
 
-describe('Test Route 1 ping api', () => {
+describe('Test pinging server', () => {
   test('It should response the GET method and return correct response', done => {
     request(app)
       .get('/api/ping')
