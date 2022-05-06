@@ -13,21 +13,24 @@ const getTwitterId = (names, cachedResult) => {
   });
 
   // call twitter user endpoint and get back userid as an object
-  return axios
-    .get(userEndpoint + usernames.join(), {
-      headers: {
-        authorization: `Bearer ${token}`
-      }
-    })
-    .then(res => {
-      const twitterIds = {};
-      res.data.data.forEach(({ username, id }) => {
-        twitterIds[username.toLowerCase()] = id;
-      });
-      return twitterIds;
-    })
-    .catch(err => console.log(err));
+  if (usernames.length) {
 
+    return axios
+      .get(userEndpoint + usernames.join(), {
+        headers: {
+          authorization: `Bearer ${token}`
+        }
+      })
+      .then(res => {
+        const twitterIds = {};
+        res.data.data.forEach(({ username, id }) => {
+          twitterIds[username.toLowerCase()] = id;
+        });
+        return twitterIds;
+      })
+      .catch(err => console.log(err));
+  }
+  return null;
 };
 
 module.exports = getTwitterId;
