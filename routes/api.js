@@ -3,6 +3,8 @@ const router = express.Router();
 
 // helper funcitons
 const queryValidator = require('../helper/queryValidator');
+const callTwitterApi = require('../helper/callTwitterApi');
+const sortTweets = require('../helper/sortTweets');
 
 module.exports = cachedResult => {
   // Route for pinging the server
@@ -19,6 +21,15 @@ module.exports = cachedResult => {
       res.status(400).json(errMsg);
       return;
     }
+
+    // get all names from query and call twitter api
+    const namesArr = names.split(',');
+    callTwitterApi(namesArr, cachedResult).then(tweets => {
+
+      // sort tweets according to query parameters and send back to client
+      const parsedTweets = sortTweets(sortBy, direction, tweets);
+      res.json({ tweets: parsedTweets });
+    });
   });
 
   return router;
