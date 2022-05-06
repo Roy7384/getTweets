@@ -18,18 +18,22 @@ const getTweets = async (names, cachedResult) => {
   // generate requests for different twitter names
   const requests = names.map(name => {
     if (Object.keys(cachedResult).includes(name)) {
-      return Promise.resolve({ data: { tweets: cachedResult[name] } });
+      return Promise.resolve(cachedResult[name]);
     }
     return axios.get(endpointURL + twitterIds[name] + "/tweets", {
       params,
       headers
-    });
+    })
+      .then(res => {
+        cachedResult[name] = res.data.data;
+        return res.data.data;
+      });
   });
 
   // concurrently call twitter api for all twitter names
   return Promise.all(requests)
     .then(res => {
-      return res.map(result => result.data.data).flat();
+      return res.flat();
     })
     .catch(err => console.log(err));
 
