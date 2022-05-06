@@ -1,6 +1,14 @@
 # getTweets
 A simple express API server with caching, that returns a list of recent tweets according to query parameters. <br>
-Will retrieve 20 recent tweets per given twitter username excluding retweets. Requests to twitter api are made concurrently. 
+Will retrieve 20 recent tweets per given twitter username excluding retweets. Requests to twitter api are made concurrently. Server deloyed to Heroku. Try the api with this url: 
+
+## Run Locally
+
+1. Clone this repository onto your local device.
+2. Install dependencies using the `npm install` command.
+3. Add Bearer token to .env file accroding to .env.example.
+5. Start the server using the `npm start` command. The app will be served at <http://localhost:3000/>.
+6. Make calls to routes shown below
 
 ## Routes
 - GET /api/ping
