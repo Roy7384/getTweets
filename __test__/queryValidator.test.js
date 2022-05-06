@@ -2,7 +2,7 @@ const queryValidator = require('../helper/queryValidator');
 
 describe('Test query validation helper function', () => {
 
-  test('It should return error when no tags are provided', () => {
+  test('It should return error when no names are provided', () => {
     expect(queryValidator().error).toBe('names parameter is required');
   });
 
