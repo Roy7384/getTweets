@@ -23,9 +23,11 @@ const getTwitterId = (names, cachedResult) => {
       })
       .then(res => {
         const twitterIds = {};
-        res.data.data.forEach(({ username, id }) => {
-          twitterIds[username.toLowerCase()] = id;
-        });
+        if (res.data.data) {
+          res.data.data.forEach(({ username, id }) => {
+            twitterIds[username.toLowerCase()] = id;
+          });
+        }
         return twitterIds;
       })
       .catch(err => console.log(err));
