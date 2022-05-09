@@ -27,7 +27,8 @@ const getTweets = async (names, cachedResult) => {
       .then(res => {
         cachedResult[name] = res.data.data;
         return res.data.data;
-      });
+      })
+      .catch(err => console.log("get tweets failed due to unknown twitter username"));
   });
 
   // concurrently call twitter api for all twitter names
