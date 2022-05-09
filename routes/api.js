@@ -27,9 +27,15 @@ module.exports = cachedResult => {
     
     getTweets(namesArr, cachedResult).then(tweets => {
 
-      // sort tweets according to query parameters and send back to client
-      const parsedTweets = sortTweets(sortBy, direction, tweets);
-      res.json({ tweets: parsedTweets });
+      if (tweets[0]) {
+        // sort tweets according to query parameters and send back to client
+        const parsedTweets = sortTweets(sortBy, direction, tweets);
+        res.json({ tweets: parsedTweets });
+        return;
+      }
+
+      // if tweets are empty, send back response indicating username does not exist
+      res.json({ failed: "twitter username does not exist" });
     });
   });
 
